@@ -2,6 +2,7 @@ import React from "react";
 import MeetupDetail from "../../components/meetups/MeetupDetail";
 import { MongoClient, ObjectId } from "mongodb";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 const MeetupDetails = (props) => {
   return (
@@ -51,6 +52,7 @@ export async function getStaticProps(context) {
   const meetup = await meetupsCollection.findOne({
     _id: new ObjectId(context.params.meetupId),
   });
+
   client.close();
 
   return {
